@@ -4,7 +4,9 @@ import useOnPlay from "@/hooks/useOnPlay";
 import SongItem from "./SongItem";
 
 const SongContent = ({songs}) => {
-
+    
+    const onPlay = useOnPlay(songs);
+    
     if (songs.length === 0){
         return (
             <div className="mt-4 text-neutral-400">
@@ -12,8 +14,7 @@ const SongContent = ({songs}) => {
             </div>
         )
     }
-
-    const onPlay = useOnPlay(songs);
+    
 
     return (
         <div 

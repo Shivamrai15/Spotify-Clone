@@ -6,7 +6,9 @@ import LikeButton from "@/components/LikeButton";
 import useOnPlay from "@/hooks/useOnPlay";
 
 const SearchContent = ({songs, search}) => {
-
+    
+    const onPlay = useOnPlay(songs);
+    
     if(songs.length === 0 && search){
         return (
             <div className="flex flex-col mt-10 justify-center items-center w-full p-4 text-center">
@@ -16,7 +18,6 @@ const SearchContent = ({songs, search}) => {
         )
     }
 
-    const onPlay = useOnPlay(songs)
 
     const topResult = songs[0];
     const relatedResults = songs.slice(1, 5);
