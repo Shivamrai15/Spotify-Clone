@@ -6,16 +6,11 @@ import { useUser } from "./useUser";
 const useOnPlay = (songs)=>{
     const player = usePlayer();
     const authModal = useAuthModal();
-    const subscriptionModal = useSubscribeModal();
-    const { user, subscription } = useUser();
+    const { user } = useUser();
 
     const onPlay = (id)=>{
         if(!user){
             return authModal.onOpen();
-        }
-
-        if(!subscription){
-            return subscriptionModal.onOpen();
         }
 
         player.setId(id);
