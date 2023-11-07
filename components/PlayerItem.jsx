@@ -13,7 +13,9 @@ const PlayerItem = ({data}) => {
                 flex
                 items-center
                 gap-x-3
-                w-64
+                w-56
+                sm:w-64
+                md:w-72
                 py-2
                 px-3
             "

@@ -25,8 +25,11 @@ const MediaItem = ({data, onClick}) => {
                 gap-x-3
                 cursor-pointer
                 hover:bg-neutral-800/50
-                w-full
+                w-56
+                sm:w-80
+                md:w-full
                 p-2
+                flex-1
             "
         >
             <div

@@ -6,12 +6,14 @@ import PlayerItem from "./PlayerItem";
 import { BsPauseFill, BsPlayFill } from "react-icons/bs"
 import { FaBackwardStep, FaForwardStep } from "react-icons/fa6";
 import { HiSpeakerXMark, HiSpeakerWave } from "react-icons/hi2"
+import { PiRepeatBold, PiRepeatOnceBold } from 'react-icons/pi';
 import Slider from "./Slider";
 import usePlayer from "@/hooks/usePlayer";
 import { useState, useEffect, useRef } from "react";
 import ReactPlayer from "react-player";
 import useColor from "@/hooks/useColor";
 import ProgressSlider from "./ProgressSlider";
+import { twMerge } from "tailwind-merge";
 
 
 const format = (seconds) => {
@@ -35,6 +37,7 @@ const PlayerContent = ({song, songUrl}) => {
 
     const [volume, setVolume] = useState(1);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isLoop, setIsLoop] = useState(false);
     const playerRef = useRef(null);
 
     const [ states, setState] = useState({
@@ -45,6 +48,7 @@ const PlayerContent = ({song, songUrl}) => {
 
     const Icon = isPlaying ? BsPauseFill : BsPlayFill;
     const VolumeIcon = volume === 0 ? HiSpeakerXMark : HiSpeakerWave;
+    const RepeatIcon = isLoop ? PiRepeatOnceBold : PiRepeatBold
 
     const onPlayPrevious = () => {
         if(player.ids.length === 0){
@@ -116,19 +120,21 @@ const PlayerContent = ({song, songUrl}) => {
             className = "grid grid-cols-2 md:grid-cols-3 h-full"
         >
             <div className="flex w-full justify-start">
-                <div className = "flex items-center gap-x-4">
+                <div className = "flex items-center gap-x-2">
                     <PlayerItem
                         data={song}
                     />
-                    <LikeButton
-                        songId={song.id}
-                    />
+                    <div className="z-10 md:z-0">
+                        <LikeButton
+                            songId={song.id}
+                        />
+                    </div>
                 </div>
             </div>
-            <div className = "flex md:hidden col-auto w-full justify-end items-center px-2">
+                        <div className = "flex md:hidden col-auto justify-end items-center px-2">
                 <div
                     onClick = {handlePlay}
-                    className = "h-10 w-10 flex items-center justify-center rounded-full bg-white p-1"
+                    className = "h-10 w-10 flex items-center justify-center rounded-full bg-white p-1 mr-3"
                 >
                     <Icon size={30} className = "text-black"/>
                 </div>
@@ -167,6 +173,7 @@ const PlayerContent = ({song, songUrl}) => {
                             autoPlay={true}
                             playing={isPlaying}
                             controls={true}
+                            loop = {isLoop}
                             onDuration={handleDuration}
                             onProgress={handleProgress}
                             volume={volume}
@@ -183,7 +190,14 @@ const PlayerContent = ({song, songUrl}) => {
             <div
                 className = "hidden md:flex w-full justify-end pr-4"
             >
-                <div className = "flex items-center gap-x-2 w-[120px]">
+                <div className = "flex items-center gap-x-2 w-[150px]">
+                    <RepeatIcon 
+                        onClick={()=>setIsLoop(!isLoop)}
+                        size= {35} 
+                        className={twMerge("text-neutral-400 mr-3 cursor-pointer",
+                                    isLoop && "text-green-500"
+                                )}
+                    />
                     <VolumeIcon
                         onClick = {toogelMute}
                         className = "cursor-pointer"
