@@ -66,13 +66,13 @@ const SmallDevicesPlayer = ({
             <div 
                 style={ {backgroundImage : `linear-gradient(to bottom, ${bgColor}, ${bgColor}5e, #171717)`}}
                 className={twMerge(
-                "fixed md:hidden bottom-0 z-10 opacity-0 left-0 w-full h-0 bg-neutral-900 transition-height duration-200 overflow-hidden",
+                "fixed md:hidden bottom-0 z-10 opacity-0 left-0 w-full h-0 overflow-y-auto bg-neutral-900 transition-height duration-200 overflow-hidden",
                 isOpen && "h-screen opacity-100",
 
             )}>
                 <div className="flex flex-col relative h-full w-full overflow-hidden gap-y-4">
                     <div
-                        className="m-6"
+                        className="mx-6 my-12"
                         onClick={handleButtonClick}
                     >
                         <IoIosArrowDown size={35}/>
@@ -83,7 +83,7 @@ const SmallDevicesPlayer = ({
                         </div>
                     </div>
                     <div
-                        className="flex flex-col justify-center items-center w-full absolute bottom-16 "
+                        className="flex flex-col justify-center items-center w-full absolute bottom-8 "
                     >
                         <div  className="flex justify-between items-center w-80">
                             <div>
@@ -100,7 +100,7 @@ const SmallDevicesPlayer = ({
                         </div>
 
                         <div className="flex flex-col items-center justify-center w-full">
-                            <div className="flex justify-center items-center w-80 mt-8">
+                            <div className="flex justify-center items-center w-80 mt-14">
                                 <ProgressSlider
                                     value={states.played}
                                     onChange={(value)=>handleSeekChange(value)}
