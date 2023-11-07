@@ -11,7 +11,7 @@ const ProgressSlider = ({value = 1, onChange}) => {
 
     return (
         <RadixSlider.Root
-                className = "relative flex items-center select-none touch-none max-w-64 w-[600px] h-3 group cursor-pointer"
+                className = "relative flex items-center select-none touch-none max-w-64 w-[600px] h-3 group md:cursor-pointer"
                 defaultValue = {[1]}
                 value = {[value]}
                 onValueChange = {handleChange}

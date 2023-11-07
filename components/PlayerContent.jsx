@@ -14,6 +14,7 @@ import ReactPlayer from "react-player";
 import useColor from "@/hooks/useColor";
 import ProgressSlider from "./ProgressSlider";
 import { twMerge } from "tailwind-merge";
+import SmallDevicesPlayer from "./SmallDevicesPlayer";
 
 
 const format = (seconds) => {
@@ -116,8 +117,19 @@ const PlayerContent = ({song, songUrl}) => {
     }
 
     return (
+        <>
+        <SmallDevicesPlayer
+            song = {song}
+            onPlayNext = {onPlayNext}
+            Icon = {Icon}
+            handlePlay = {handlePlay}
+            onPlayPrevious = {onPlayPrevious}
+            states = {states}
+            handleSeekChange = {handleSeekChange}
+            format = {format}
+        />
         <div
-            className = "grid grid-cols-2 md:grid-cols-3 h-full"
+            className = "hidden md:grid md:grid-cols-3 h-full"
         >
             <div className="flex w-full justify-start">
                 <div className = "flex items-center gap-x-2">
@@ -131,15 +143,7 @@ const PlayerContent = ({song, songUrl}) => {
                     </div>
                 </div>
             </div>
-                        <div className = "flex md:hidden col-auto justify-end items-center px-2">
-                <div
-                    onClick = {handlePlay}
-                    className = "h-10 w-10 flex items-center justify-center rounded-full bg-white p-1 mr-3"
-                >
-                    <Icon size={30} className = "text-black"/>
-                </div>
-            </div>
-            <div className="hidden h-full md:flex md:flex-col justify-center items-center w-full max-w-[722px] gap-y-2">
+            <div className="h-full flex flex-col justify-center items-center w-full max-w-[722px] gap-y-2">
                 <div
                     className= "h-full flex justify-center items-center w-full max-w-[722px] gap-x-6"
                 >
@@ -188,7 +192,7 @@ const PlayerContent = ({song, songUrl}) => {
                 </div>
             </div>
             <div
-                className = "hidden md:flex w-full justify-end pr-4"
+                className = "flex w-full justify-end pr-4"
             >
                 <div className = "flex items-center gap-x-2 w-[150px]">
                     <RepeatIcon 
@@ -210,6 +214,7 @@ const PlayerContent = ({song, songUrl}) => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 
