@@ -9,6 +9,7 @@ import { FaBackwardStep, FaForwardStep } from "react-icons/fa6";
 import LikeButton from "./LikeButton";
 import ProgressSlider from "./ProgressSlider";
 import PlayerItem from "./PlayerItem";
+import useMobilePlayer from "@/hooks/useMobilePlayer";
 
 const SmallDevicesPlayer = ({
     song,
@@ -29,10 +30,14 @@ const SmallDevicesPlayer = ({
 
     const imageUrl = useLoadImage(song);
 
-    const [isOpen, setIsOpen] = useState(false);
+    const {isOpen, onOpen, onClose} = useMobilePlayer();
 
     const handleButtonClick = () => {
-        setIsOpen(!isOpen);
+        if(isOpen){
+            onClose();
+        }else{
+            onOpen();
+        }
     };
 
     return (
@@ -67,7 +72,7 @@ const SmallDevicesPlayer = ({
                 style={ {backgroundImage : `linear-gradient(to bottom, ${bgColor}, ${bgColor}5e, #171717)`}}
                 className={twMerge(
                 "fixed md:hidden bottom-0 z-10 opacity-0 left-0 w-full h-0 overflow-y-auto bg-neutral-900 transition-height duration-200 overflow-hidden",
-                isOpen && "h-screen opacity-100",
+                isOpen && "h-full opacity-100",
 
             )}>
                 <div className="flex flex-col relative h-full w-full overflow-hidden gap-y-4">
