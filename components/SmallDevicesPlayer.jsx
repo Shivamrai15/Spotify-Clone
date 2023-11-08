@@ -77,7 +77,7 @@ const SmallDevicesPlayer = ({
             )}>
                 <div className="flex flex-col relative h-full w-full overflow-hidden gap-y-4">
                     <div
-                        className="mx-6 my-12"
+                        className="m-6"
                         onClick={handleButtonClick}
                     >
                         <IoIosArrowDown size={35}/>
