@@ -105,7 +105,7 @@ const SmallDevicesPlayer = ({
                         </div>
 
                         <div className="flex flex-col items-center justify-center w-full">
-                            <div className="flex justify-center items-center w-80 mt-14">
+                            <div className="flex justify-center items-center w-80 mt-8">
                                 <ProgressSlider
                                     value={states.played}
                                     onChange={(value)=>handleSeekChange(value)}
@@ -115,7 +115,7 @@ const SmallDevicesPlayer = ({
                                 <p className="text-xs text-neutral-300">{format(states.playedSeconds)}</p>
                                 <p className="text-xs text-neutral-300">{format(states.duration)}</p>
                             </div>
-                            <div className="flex justify-center items-center w-full gap-x-6 mt-10">
+                            <div className="flex justify-center items-center w-full gap-x-6 mt-4">
                                 <FaBackwardStep
                                     onClick = {onPlayPrevious}
                                     size={35}
