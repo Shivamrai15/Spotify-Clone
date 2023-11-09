@@ -50,13 +50,6 @@ const SmallDevicesPlayer = ({
                         <PlayerItem
                             data={song}
                         />
-                        <div className="z-10 md:z-0"
-                            onClick={(e)=>{e.stopPropagation()}}
-                        >
-                            <LikeButton
-                                songId={song.id}
-                            />
-                        </div>
                     </div>
                 </div>
                 <div className = "flex md:hidden col-auto justify-end items-center px-2">
