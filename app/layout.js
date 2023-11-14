@@ -4,8 +4,7 @@ import Sidebar from "@/components/Sidebar";
 import SupabaseProvider from "@/providers/SupabaseProvider";
 import UserProvider from "@/providers/UserProvider";
 import ModalProvider from "@/providers/ModalProvider";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import {Toaster} from "sonner";
 import getSongsByUser from "@/actions/getSongsByUser";
 import Player from "@/components/Player";
 import getActiveProductsWithPrices from "@/actions/getActiveProductsWithPrices";
@@ -28,10 +27,10 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <link rel="icon" href="/images/spotify.ico" sizes="any" />
       <body className={figtree.className}>
-        <ToastContainer
-              theme="dark"
-        />
         <SupabaseProvider>
+          <Toaster
+            position="bottom-center"
+          />
           <UserProvider>
             <ModalProvider products = {products}/>
             <Sidebar

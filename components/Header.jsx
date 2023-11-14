@@ -7,7 +7,7 @@ import { GoHomeFill } from "react-icons/go";
 import { RiSearchLine } from "react-icons/ri";
 import useAuthModal from "@/hooks/useAuthModal";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
-import { toast } from 'react-toastify';
+import { toast } from 'sonner';
 import { FaUserAlt } from "react-icons/fa";
 import { useUser } from "@/hooks/useUser";
 import usePlayer from "@/hooks/usePlayer";

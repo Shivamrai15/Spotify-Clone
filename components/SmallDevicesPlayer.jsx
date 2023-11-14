@@ -42,9 +42,17 @@ const SmallDevicesPlayer = ({
 
     return (
         <div className='md:hidden'>
-            <div className="h-full grid grid-cols-2 w-full"
+            <div className="h-full grid grid-cols-2 w-full relative"
                 onClick={handleButtonClick}
             >
+                <div className="w-screen -top-5 absolute left-0">
+                    <div className="w-full">
+                        <ProgressSlider
+                            value={states.played}
+                            className="w-full"
+                        />
+                    </div>
+                </div>
                 <div className="flex w-full justify-start">
                     <div className = "flex items-center gap-x-2">
                         <PlayerItem
@@ -64,7 +72,7 @@ const SmallDevicesPlayer = ({
             <div 
                 style={ {backgroundImage : `linear-gradient(to bottom, ${bgColor}, ${bgColor}5e, #171717)`}}
                 className={twMerge(
-                "fixed md:hidden bottom-0 z-10 opacity-0 left-0 w-full h-0 overflow-y-auto bg-neutral-900 transition-height duration-200 overflow-hidden",
+                "fixed md:hidden bottom-0 z-10 opacity-0 left-0 w-full h-0 overflow-y-auto bg-neutral-900 transition-height ease-in-out duration-300 overflow-hidden",
                 isOpen && "h-full opacity-100",
 
             )}>
@@ -76,7 +84,10 @@ const SmallDevicesPlayer = ({
                         <IoIosArrowDown size={35}/>
                     </div>
                     <div className="flex justify-center items-center w-full">
-                        <div className="w-80 h-80 overflow-hidden relative">
+                        <div className={twMerge(
+                            "w-80 h-80 overflow-hidden relative opacity-0 transition ease-in-out duration-300",
+                            isOpen && "opacity-100"
+                        )}>
                             <Image fill src={imageUrl} alt = "Thumbnail" className="object-cover"/>
                         </div>
                     </div>

@@ -6,7 +6,7 @@ import { useSessionContext } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { toast } from "react-toastify";
+import {toast} from "sonner";
 
 const LikeButton = ({songId}) => {
 

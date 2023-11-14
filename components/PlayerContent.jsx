@@ -15,6 +15,7 @@ import useColor from "@/hooks/useColor";
 import ProgressSlider from "./ProgressSlider";
 import { twMerge } from "tailwind-merge";
 import SmallDevicesPlayer from "./SmallDevicesPlayer";
+import { useVolume } from "@/hooks/useVolume";
 
 
 const format = (seconds) => {
@@ -36,8 +37,9 @@ const PlayerContent = ({song, songUrl}) => {
     const player = usePlayer();
     const color = useColor();
 
-    const [volume, setVolume] = useState(1);
+    const {volume, setVolume} = useVolume();
     const [isPlaying, setIsPlaying] = useState(false);
+    const [mute, setMute] = useState(false);
     const [isLoop, setIsLoop] = useState(false);
     const playerRef = useRef(null);
 
@@ -48,7 +50,7 @@ const PlayerContent = ({song, songUrl}) => {
     });
 
     const Icon = isPlaying ? BsPauseFill : BsPlayFill;
-    const VolumeIcon = volume === 0 ? HiSpeakerXMark : HiSpeakerWave;
+    const VolumeIcon = mute ? HiSpeakerXMark : HiSpeakerWave;
     const RepeatIcon = isLoop ? PiRepeatOnceBold : PiRepeatBold
 
     const onPlayPrevious = () => {
@@ -108,12 +110,7 @@ const PlayerContent = ({song, songUrl}) => {
     };
 
     const toogelMute = () => {
-        if(volume === 0){
-            setVolume(1);
-        }else{
-            setVolume(0);
-        }
-
+       setMute(!mute);
     }
 
     return (
@@ -186,6 +183,7 @@ const PlayerContent = ({song, songUrl}) => {
                                 onPlayNext();
                             }}  
                             url={songUrl}
+                            muted = {mute}
                         />
                     </div>
                     <p className="text-xs text-neutral-300">{format(states.duration)}</p>
