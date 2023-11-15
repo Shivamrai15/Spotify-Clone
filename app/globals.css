@@ -9,13 +9,3 @@ body,
   background-color: black;
   color-scheme: dark;
 }
-
-::-webkit-scrollbar{
-  background: transparent;
-  width: 13px;
-}
-
-::-webkit-scrollbar-thumb{
-  background: #4b4b4b;
-  background-clip: content-box;
-}
