@@ -6,7 +6,7 @@ import { useUser } from "@/hooks/useUser";
 import { postData } from "@/libs/helpers";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { toast } from "sonner";
 
 const AccountContent = () => {
 

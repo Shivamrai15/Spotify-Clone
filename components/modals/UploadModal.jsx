@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import Input from '../Input';
 import Button from '../Button';
-import { toast } from 'react-toastify';
+import { toast } from 'sonner';
 import { useUser } from '@/hooks/useUser';
 import uniqid from "uniqid";
 import { useSupabaseClient } from '@supabase/auth-helpers-react';

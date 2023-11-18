@@ -4,7 +4,7 @@ import { useState } from "react";
 import Button from "../Button";
 import Modal from "./Modal";
 import { useUser } from "@/hooks/useUser";
-import { toast } from "react-toastify";
+import { toast } from "sonner";
 import { postData } from "@/libs/helpers";
 import { getStripe } from "@/libs/stripeClient";
 import useSubscribeModal from "@/hooks/useSubscribeModal";
