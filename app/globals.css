@@ -12,7 +12,7 @@ body,
 
 @media screen and (min-width : 768px) {
   ::-webkit-scrollbar{
-    background: #171717;
+    background: #00000000;
     width: 14px;
   }
   ::-webkit-scrollbar-thumb{

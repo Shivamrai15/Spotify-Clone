@@ -16,6 +16,7 @@ import ProgressSlider from "./ProgressSlider";
 import { twMerge } from "tailwind-merge";
 import SmallDevicesPlayer from "./SmallDevicesPlayer";
 import { useVolume } from "@/hooks/useVolume";
+import { useRepeat } from "@/hooks/useRepeat";
 
 
 const format = (seconds) => {
@@ -40,7 +41,7 @@ const PlayerContent = ({song, songUrl}) => {
     const {volume, setVolume} = useVolume();
     const [isPlaying, setIsPlaying] = useState(false);
     const [mute, setMute] = useState(false);
-    const [isLoop, setIsLoop] = useState(false);
+    const {repeat, setRepeat} = useRepeat();
     const playerRef = useRef(null);
 
     const [ states, setState] = useState({
@@ -51,7 +52,7 @@ const PlayerContent = ({song, songUrl}) => {
 
     const Icon = isPlaying ? BsPauseFill : BsPlayFill;
     const VolumeIcon = mute ? HiSpeakerXMark : HiSpeakerWave;
-    const RepeatIcon = isLoop ? PiRepeatOnceBold : PiRepeatBold
+    const RepeatIcon = repeat ? PiRepeatOnceBold : PiRepeatBold
 
     const onPlayPrevious = () => {
         if(player.ids.length === 0){
@@ -174,8 +175,8 @@ const PlayerContent = ({song, songUrl}) => {
                             autoPlay={true}
                             playing={isPlaying}
                             controls={true}
-                            loop = {isLoop}
-                            onDuration={handleDuration}
+                            loop = {repeat}
+   Repeat                   onDuration={handleDuration}
                             onProgress={handleProgress}
                             volume={volume}
                             onEnded={()=>{
@@ -194,10 +195,10 @@ const PlayerContent = ({song, songUrl}) => {
             >
                 <div className = "flex items-center gap-x-2 w-[150px]">
                     <RepeatIcon 
-                        onClick={()=>setIsLoop(!isLoop)}
-                        size= {35} 
+                        onClick={()=>setRepeat(!repeat)}
+  Repeat                size= {35} 
                         className={twMerge("text-neutral-400 mr-3 cursor-pointer",
-                                    isLoop && "text-green-500"
+                                    repeat && "Repeatreen-500"
                                 )}
                     />
                     <VolumeIcon

@@ -13,6 +13,7 @@ const HomeHeader = () => {
     return (
         <Header
             color = {defaultColor}
+            className="transition-colors duration-500"
         >
                 <h1
                     className="text-white text-3xl font-bold"

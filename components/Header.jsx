@@ -44,9 +44,13 @@ const Header = ({children, className, color}) => {
     }, [color]);
 
     return (
-        <div 
-
-            style={color && {background : `linear-gradient(to bottom, ${bgColor}, ${bgColor}5e, #171717)`}}
+        <div
+            style={color && {
+                background: `linear-gradient(to bottom, ${bgColor}, ${bgColor}5e, #171717)`,
+                transitionProperty: "all",
+                transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+                transitionDuration: "650ms"
+            }}
             className={twMerge(
                 "h-fit bg-gradient-to-b from-[#262626] p-6",
                 className,
